@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wh.mall.mappers.DemoMapper">
+<!--    &lt;!&ndash;以别名的方式指定隐射Map集合格式&ndash;&gt;-->
+<!--    <resultMap id="Test" type="lbwnb">-->
+<!--        <result column="name" property="xxx"/>-->
+<!--    </resultMap>-->
+<!--    <select id="selectDemo" resultMap="Test">-->
+<!--        select *-->
+<!--        from number-->
+<!--    </select>-->
+<!--    探究接收实体类多个实例构造器，映射是否可以正确选择合适的实例构造器-->
+    <select id="selectDemo" resultType="lbwnb">
+        select * from number
+    </select>
+<!--    查询数据库name字段，使用`parameterType`属性来指定参数类型（非必须，可以不用，推荐不用）-->
+    <select id="selectOne" resultType="lbwnb">
+        select * from number where name = #{name}
+    </select>
+    <insert id="insetOne" parameterType="lbwnb">
+        insert into number(name) value(#{name})
+    </insert>
+</mapper>

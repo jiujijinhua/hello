@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!--XML是以顺序方式运行，顺序错乱则会报错-->
+    <typeAliases>
+        <!--将此包中所有实体类取别名，首字母小写-->
+        <package name="com/wh/mall/entity"/>
+    </typeAliases>
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="com.mysql.jdbc.Driver"/>
+<!--                jdbc字符编码与mysql保持一致，不然会导致字符串乱码无法正确查找结果-->
+<!--                xml储存数据文件无法使用&，所以要使用转义字符&amp，原意与&相同-->
+                <property name="url" value="jdbc:mysql://localhost:3306/nba?useUnicode=true&amp;characterEncoding=UTF-8"/>
+                <property name="username" value="root"/>
+                <property name="password" value="1659588265"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <mappers>
+        <mapper resource="com/wh/mall/mappers/DemoMapper.xml"/>
+    </mappers>
+</configuration>
